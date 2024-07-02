@@ -43,3 +43,8 @@ def bmrcalc(age, sex, weight, height):
     else:
         bmr -= 161
     return bmr, sex
+
+
+def calories_calc(bmr):
+    activity_factor = float(input("Enter your activity factor: "))
+    return bmr * activity_factor
