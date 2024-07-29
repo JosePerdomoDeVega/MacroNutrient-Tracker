@@ -1,4 +1,5 @@
-from macronutrientcalc import bmrcalc, ask_body_parameters, check_body_parameters, calories_calc
+from macronutrientcalc import (bmrcalc, ask_body_parameters, check_body_parameters,
+                               calories_calc, macros_calc)
 
 if __name__ == '__main__':
 
@@ -20,4 +21,11 @@ if __name__ == '__main__':
     print('If you do very intense exercise your activity factor is 1.75')
 
     kcal = calories_calc(bmr)
-    print(f'The amount of kcalories you need daily is {round(kcal, 2)}')
+    print(f'The amount of kcalories you need daily to maintenance is {round(kcal, 2)}')
+
+    print("If your goal is not maintenance, then have to write if you want to enter in deficit or exceeded calories")
+    goal = input("Enter deficit or exceeded: ")
+    protein, fat, carbs = macros_calc(body_parameters[1], round(kcal, 2), body_parameters[2], goal)
+    print(f'The amount of protein you need is {round(protein, 2)} kcal')
+    print(f'The amount of fat you need is {round(fat, 2)} kcal')
+    print(f'The amount of carbs you need is {round(carbs, 2)} kcal')

@@ -37,7 +37,7 @@ def check_body_parameters(age, sex, weight, height):
 
 
 def bmrcalc(age, sex, weight, height):
-    bmr = 10*weight + 6.25*height - 5*age
+    bmr = 10 * weight + 6.25 * height - 5 * age
     if sex == 'M':
         bmr += 5
     else:
@@ -48,3 +48,23 @@ def bmrcalc(age, sex, weight, height):
 def calories_calc(bmr):
     activity_factor = float(input("Enter your activity factor: "))
     return bmr * activity_factor
+
+
+def calories_goal(total_calories, goal):
+    if goal == 'exceeded':
+        total_calories = total_calories + 400
+    if goal == 'deficit':
+        total_calories = total_calories - 400
+    return total_calories
+
+
+def macros_calc(sex, calories, weight, goal):
+    calories = calories_goal(calories, goal)
+    protein = 1.6 * weight * 4
+    if sex == 'M':
+        fat = 0.25 * calories
+        carbs = (1 - (protein / calories + 0.25)) * calories
+    if sex == 'F':
+        fat = 0.3 * calories
+        carbs = (1 - (protein / calories + 0.3)) * calories
+    return protein, fat, carbs
